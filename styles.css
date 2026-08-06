@@ -1,18 +1,20 @@
 /* ellie-baker.org — one page, no dependencies. */
 
 :root {
-  --bg:   #fdfdfc;
-  --text: #1a1a18;
-  --link: #2f62d9;
-  --focus:#0b5cd5;
+  --bg:    #fdfdfc;
+  --text:  #1a1a18;
+  --hi:    #5b9bd5;  /* the "Hi!" blue */
+  --link:  #2f62d9;
+  --focus: #0b5cd5;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg:   #16161a;
-    --text: #ececef;
-    --link: #8fb4ff;
-    --focus:#7fb2ff;
+    --bg:    #16161a;
+    --text:  #ececef;
+    --hi:    #7db3e4;
+    --link:  #8fb4ff;
+    --focus: #7fb2ff;
   }
 }
 
@@ -30,18 +32,23 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Big, rounded and blue — closest match to the hand-drawn lettering using
+   fonts already on the machine, so the page stays dependency-free. */
 .name {
-  margin: 0 0 2.25rem;
-  font-size: 1.75rem;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  margin: 0 0 1.5rem;
+  font-family: ui-rounded, "SF Pro Rounded", "Hiragino Maru Gothic ProN",
+               "Varela Round", "Trebuchet MS", system-ui, sans-serif;
+  font-size: clamp(3rem, 7vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--hi);
 }
 
 main {
   display: flex;
   align-items: flex-start;
-  gap: 2.5rem;
+  gap: 3rem;
   max-width: 48rem;
 }
 
@@ -64,8 +71,8 @@ main {
   color: var(--text);
 }
 
-/* The gap between the two statements. */
-.intro.spaced { margin-top: 3.5rem; }
+/* The gap between the two statements — about one blank line, as drawn. */
+.intro.spaced { margin-top: 2rem; }
 
 a {
   color: var(--link);
@@ -83,13 +90,12 @@ a:hover { text-decoration-thickness: 2px; }
 /* Stack on narrow screens, photo still first. */
 @media (max-width: 34rem) {
   body { padding: 2rem 1.25rem 3rem; }
-  /* stacked layout below */
-  .name { margin-bottom: 1.75rem; font-size: 1.5rem; }
+  .name { margin-bottom: 1.25rem; }
   main {
     flex-direction: column;
     gap: 1.75rem;
   }
   .portrait { width: 10rem; }
   .intro { font-size: 1.2rem; }
-  .intro.spaced { margin-top: 2.5rem; }
+  .intro.spaced { margin-top: 1.75rem; }
 }
