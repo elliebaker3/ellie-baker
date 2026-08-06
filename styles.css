@@ -22,8 +22,10 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  /* Sits near the top of the page and close to the left edge. */
-  padding: 2.5rem 2rem 4rem;
+  /* Near the top, and indented from the left rather than flush against it.
+     The clamp keeps the indent proportional on wide screens without letting
+     it eat the page on a phone. */
+  padding: 3rem clamp(1.25rem, 9vw, 9rem) 4rem;
   font: 1rem/1.65 ui-serif, Georgia, "Times New Roman", serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -81,6 +83,7 @@ a:hover { text-decoration-thickness: 2px; }
 /* Stack on narrow screens, photo still first. */
 @media (max-width: 34rem) {
   body { padding: 2rem 1.25rem 3rem; }
+  /* stacked layout below */
   .name { margin-bottom: 1.75rem; font-size: 1.5rem; }
   main {
     flex-direction: column;
