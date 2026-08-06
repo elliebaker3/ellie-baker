@@ -3,7 +3,6 @@
 :root {
   --bg:   #fdfdfc;
   --text: #1a1a18;
-  --soft: #55534d;
   --link: #2f62d9;
   --focus:#0b5cd5;
 }
@@ -12,7 +11,6 @@
   :root {
     --bg:   #16161a;
     --text: #ececef;
-    --soft: #a7a5ad;
     --link: #8fb4ff;
     --focus:#7fb2ff;
   }
@@ -22,23 +20,27 @@
 
 body {
   margin: 0;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
   background: var(--bg);
   color: var(--text);
-  padding: 2.5rem 1.5rem;
+  /* Sits near the top of the page and close to the left edge. */
+  padding: 2.5rem 2rem 4rem;
   font: 1rem/1.65 ui-serif, Georgia, "Times New Roman", serif;
   -webkit-font-smoothing: antialiased;
 }
 
+.name {
+  margin: 0 0 2.25rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
 main {
-  width: 100%;
-  max-width: 46rem;
-  margin-inline: auto;
   display: flex;
   align-items: flex-start;
   gap: 2.5rem;
+  max-width: 48rem;
 }
 
 .portrait {
@@ -49,21 +51,19 @@ main {
   border-radius: 3px;
 }
 
-.text { padding-top: 0.25rem; }
+.text { padding-top: 0.15rem; }
 
+/* Both statements share one style: same family, size, weight and colour. */
 .intro {
   margin: 0;
   font-size: 1.3rem;
   line-height: 1.45;
   letter-spacing: -0.005em;
+  color: var(--text);
 }
 
-/* The "space" between the two statements. */
-.note {
-  margin: 3.5rem 0 0;
-  font-size: 1.05rem;
-  color: var(--soft);
-}
+/* The gap between the two statements. */
+.intro.spaced { margin-top: 3.5rem; }
 
 a {
   color: var(--link);
@@ -80,12 +80,13 @@ a:hover { text-decoration-thickness: 2px; }
 
 /* Stack on narrow screens, photo still first. */
 @media (max-width: 34rem) {
-  body { align-items: flex-start; }
+  body { padding: 2rem 1.25rem 3rem; }
+  .name { margin-bottom: 1.75rem; font-size: 1.5rem; }
   main {
     flex-direction: column;
     gap: 1.75rem;
   }
   .portrait { width: 10rem; }
   .intro { font-size: 1.2rem; }
-  .note { margin-top: 2.5rem; }
+  .intro.spaced { margin-top: 2.5rem; }
 }
