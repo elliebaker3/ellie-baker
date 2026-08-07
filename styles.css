@@ -40,8 +40,13 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+/* The full-bleed rules are 100vw wide, which exceeds the visible width when a
+   scrollbar is present; clip rather than let that cause sideways scrolling. */
+html { overflow-x: clip; }
+
 body {
   margin: 0;
+  overflow-x: clip;
   background: var(--bg);
   color: var(--text);
   padding: clamp(3rem, 7vh, 5rem) clamp(1.25rem, 5vw, 3rem) 5rem;
@@ -82,12 +87,25 @@ main {
   display: flex;
   align-items: flex-start;
   gap: 3rem;
-  /* Hairline rules above and below, in the heading blue — thin, to match the
-     light weight of the type rather than competing with it. */
-  border-top: 1px solid var(--hi);
-  border-bottom: 1px solid var(--hi);
   padding-block: 2.75rem;
+  position: relative;
 }
+
+/* Hairline rules above and below, in the heading blue. They break out of the
+   centred column to span the full viewport width: 100vw, pulled back to the
+   left edge from the element's own centre. */
+main::before,
+main::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 1px;
+  background: var(--hi);
+}
+main::before { top: 0; }
+main::after  { bottom: 0; }
 
 .portrait {
   flex: none;
