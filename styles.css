@@ -25,7 +25,6 @@
   --text:  #1a1a18;
   --hi:      #5ea9e8;  /* the "Hi!" blue */
   --link:    var(--hi);
-  --pencil:  #7a7368;  /* graphite, for the hand-drawn circle */
   --focus: #0b5cd5;
 }
 
@@ -35,7 +34,6 @@
     --text:  #ececef;
     --hi:      #8cc2f4;
     --link:    var(--hi);
-    --pencil:  #9a9288;
     --focus: #7fb2ff;
   }
 }
@@ -122,50 +120,6 @@ a {
   text-underline-offset: 2px;
 }
 a:hover { text-decoration-thickness: 2px; }
-
-/* --- pencil circle ------------------------------------------------------ */
-
-/* Wraps the link so the drawn loop can be positioned over it. */
-.circled {
-  position: relative;
-  display: inline-block;
-  isolation: isolate;
-}
-
-/* The loop sits behind the text and overshoots the word slightly, the way a
-   real pencil circle does. preserveAspectRatio="none" lets it stretch to any
-   word length; non-scaling-stroke keeps the line an even weight regardless. */
-.circled .scribble {
-  position: absolute;
-  left: -0.62em;
-  top: -0.52em;
-  width: calc(100% + 1.24em);
-  height: calc(100% + 1.04em);
-  overflow: visible;
-  pointer-events: none;
-  z-index: -1;
-  color: var(--pencil);
-  opacity: 0.85;
-  transform: rotate(-1.2deg);
-}
-
-.circled .scribble path {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* The lighter second pass, as if the pencil went round twice. */
-.circled .scribble path.pass-2 {
-  stroke-width: 1.1;
-  opacity: 0.5;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .circled .scribble { transform: none; }
-}
 
 :focus-visible {
   outline: 3px solid var(--focus);
