@@ -1,11 +1,22 @@
 /* ellie-baker.org — one page, no external requests. */
 
-/* Libre Franklin Black, self-hosted (SIL OFL 1.1, see fonts/OFL.txt).
-   Subset to printable ASCII: 9KB, and no call out to Google. */
+/* Both faces self-hosted and subset (SIL OFL 1.1 — see the licences in
+   fonts/). No call out to Google, so nothing leaves the visitor's browser. */
+
+/* Heading: Libre Franklin Black. */
 @font-face {
   font-family: "Libre Franklin";
   src: url("fonts/libre-franklin-900.woff2") format("woff2");
   font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Body: Inter Light — an open neo-grotesque close to Helvetica Neue Light. */
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/inter-300.woff2") format("woff2");
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
@@ -35,7 +46,7 @@ body {
   background: var(--bg);
   color: var(--text);
   padding: clamp(3rem, 7vh, 5rem) clamp(1.25rem, 5vw, 3rem) 5rem;
-  font: 1rem/1.65 ui-serif, Georgia, "Times New Roman", serif;
+  font: 300 1rem/1.65 "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -91,7 +102,9 @@ main {
 .intro {
   margin: 0;
   font-size: 1.3rem;
-  line-height: 1.45;
+  font-weight: 300;
+  /* A touch more leading, since a light sans needs more air than the serif. */
+  line-height: 1.5;
   letter-spacing: -0.005em;
   color: var(--text);
 }
