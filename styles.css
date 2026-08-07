@@ -24,19 +24,25 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  /* Near the top, and indented from the left rather than flush against it.
-     The clamp keeps the indent proportional on wide screens without letting
-     it eat the page on a phone. */
-  padding: 3rem clamp(1.25rem, 9vw, 9rem) 4rem;
+  padding: clamp(3rem, 7vh, 5rem) clamp(1.25rem, 5vw, 3rem) 5rem;
   font: 1rem/1.65 ui-serif, Georgia, "Times New Roman", serif;
   -webkit-font-smoothing: antialiased;
+}
+
+/* One column shared by the heading and the body row, centred as a block so the
+   composition stays balanced on wide screens. The content inside stays
+   left-aligned, so it still reads as anchored left rather than centred. */
+.name,
+main {
+  max-width: 52rem;
+  margin-inline: auto;
 }
 
 /* Big, rounded and blue — closest match to the hand-drawn lettering using
    fonts already on the machine, so the page stays dependency-free. */
 .name {
   /* Bottom margin only: "Hi!" stays put and the photo/text move down. */
-  margin: 0 0 2.75rem;
+  margin: 0 auto 2.75rem;
   /* Elizabeth-Antiqua first: it isn't installed here yet, but naming it means
      the heading picks it up automatically if it ever is. Optima is the nearest
      widely-available stand-in, then Windows equivalents. */
@@ -62,7 +68,6 @@ main {
   display: flex;
   align-items: flex-start;
   gap: 3rem;
-  max-width: 48rem;
 }
 
 .portrait {
