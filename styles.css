@@ -73,6 +73,11 @@ main {
   display: flex;
   align-items: flex-start;
   gap: 3rem;
+  /* Hairline rules above and below, in the heading blue — thin, to match the
+     light weight of the type rather than competing with it. */
+  border-top: 1px solid var(--hi);
+  border-bottom: 1px solid var(--hi);
+  padding-block: 2.75rem;
 }
 
 .portrait {
@@ -119,6 +124,7 @@ a:hover { text-decoration-thickness: 2px; }
   main {
     flex-direction: column;
     gap: 1.75rem;
+    padding-block: 2rem;
   }
   .portrait { width: 10rem; }
   .intro { font-size: 1.2rem; }
