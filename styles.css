@@ -111,7 +111,7 @@ main::after {
   content: "";
   position: fixed;
   left: 0;
-  bottom: 2in;
+  bottom: 1in;
   width: 100vw;
   height: 1px;
   background: var(--hi);
@@ -158,8 +158,8 @@ a:hover { text-decoration-thickness: 2px; }
 /* Stack on narrow screens, photo still first. */
 @media (max-width: 34rem) {
   body { padding: 2rem 1.25rem 3rem; }
-  /* Less reserve on a phone, where two inches is a large share of the screen. */
-  main::after { bottom: 1.25in; }
+  /* Less reserve on a phone, where an inch is a larger share of the screen. */
+  main::after { bottom: 0.7in; }
   .name { margin-bottom: 2rem; }
   main {
     flex-direction: column;
