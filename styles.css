@@ -1,18 +1,8 @@
 /* ellie-baker.org — one page, no external requests. */
 
-/* Both faces self-hosted and subset (SIL OFL 1.1 — see the licences in
-   fonts/). No call out to Google, so nothing leaves the visitor's browser. */
-
-/* Heading: Libre Franklin Black. */
-@font-face {
-  font-family: "Libre Franklin";
-  src: url("fonts/libre-franklin-900.woff2") format("woff2");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Body: Inter Light — an open neo-grotesque close to Helvetica Neue Light. */
+/* Inter Light — an open neo-grotesque close to Helvetica Neue Light.
+   Self-hosted and subset (SIL OFL 1.1, licence in fonts/). No call out to
+   Google, so nothing leaves the visitor's browser. */
 @font-face {
   font-family: "Inter";
   src: url("fonts/inter-300.woff2") format("woff2");
@@ -64,16 +54,13 @@ main {
 .name {
   /* Bottom margin only: "Hi!" stays put and the photo/text move down. */
   margin: 0 auto 2.75rem;
-  /* Self-hosted, so every visitor sees the same face. */
-  font-family: "Libre Franklin", "Franklin Gothic Heavy", "Arial Black",
-               Helvetica, Arial, sans-serif;
+  /* Same face as the body text, just much larger. */
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: clamp(3rem, 7vw, 4.5rem);
-  /* The webfont is a true Black weight, so the stroke stays hairline — just
-     enough extra body without smudging the letterforms. */
-  font-weight: 900;
-  -webkit-text-stroke: 0.008em currentColor;
+  font-weight: 300;
   line-height: 1.05;
-  letter-spacing: 0.005em;
+  /* Large light type looks loose by default; pull it in slightly. */
+  letter-spacing: -0.02em;
   color: var(--hi);
 }
 
