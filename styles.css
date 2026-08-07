@@ -49,7 +49,13 @@ body {
   overflow-x: clip;
   background: var(--bg);
   color: var(--text);
-  padding: clamp(3rem, 7vh, 5rem) clamp(1.25rem, 5vw, 3rem) 5rem;
+  /* Fill the viewport and reserve two inches at the foot, so the lower rule
+     lands a fixed distance from the bottom of the window rather than however
+     far it happens to fall below the text. */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(3rem, 7vh, 5rem) clamp(1.25rem, 5vw, 3rem) 2in;
   font: 300 1rem/1.65 "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -89,6 +95,8 @@ main {
   gap: 3rem;
   padding-block: 2.75rem;
   position: relative;
+  /* Grow to take up the slack, carrying the lower rule down with it. */
+  flex: 1 0 auto;
 }
 
 /* Hairline rules above and below, in the heading blue. They break out of the
@@ -147,7 +155,8 @@ a:hover { text-decoration-thickness: 2px; }
 
 /* Stack on narrow screens, photo still first. */
 @media (max-width: 34rem) {
-  body { padding: 2rem 1.25rem 3rem; }
+  /* Less reserve on a phone, where two inches is a large share of the screen. */
+  body { padding: 2rem 1.25rem 1.25in; }
   .name { margin-bottom: 2rem; }
   main {
     flex-direction: column;
